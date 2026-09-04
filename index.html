@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JigsawPuzzles - Jigsaw Puzzle Game | AiceKing Games</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f0f1a;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-bottom: 24px;
+            box-shadow: 0 20px 60px rgba(233,69,96,0.4);
+            overflow: hidden;
+        }
+
+        .app-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #fff 30%, #f5a623);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #a0aec0;
+            max-width: 520px;
+            margin: 0 auto 40px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #f5a623;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Features */
+        .section {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 48px;
+            color: #fff;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 32px 28px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(245,166,35,0.3);
+        }
+
+        .feature-icon {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .feature-card p {
+            font-size: 15px;
+            color: #8896a6;
+        }
+
+        /* Difficulty */
+        .difficulty-section {
+            background: rgba(255,255,255,0.02);
+            border-top: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 80px 20px;
+        }
+
+        .difficulty-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .difficulty-chip {
+            background: rgba(233,69,96,0.12);
+            border: 1px solid rgba(233,69,96,0.3);
+            color: #e94560;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 10px 22px;
+            border-radius: 100px;
+            transition: background 0.2s;
+        }
+
+        .difficulty-chip:hover {
+            background: rgba(233,69,96,0.25);
+        }
+
+        .difficulty-label {
+            font-size: 13px;
+            color: #6b7280;
+            font-weight: 400;
+            margin-left: 4px;
+        }
+
+        /* How to play */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            counter-reset: step;
+        }
+
+        .step {
+            text-align: center;
+            counter-increment: step;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e94560, #f5a623);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            content: counter(step);
+        }
+
+        .step h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .step p {
+            font-size: 14px;
+            color: #8896a6;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            color: #4a5568;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #f5a623;
+            text-decoration: none;
+        }
+
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<!-- Top Nav -->
+<nav style="background:#0a0a14; border-bottom:1px solid rgba(255,255,255,0.06); padding:16px 32px; display:flex; align-items:center;">
+    <span style="font-size:18px; font-weight:800; color:#fff; letter-spacing:-0.5px;">
+        AiceKing <span style="color:#f5a623;">Games</span>
+    </span>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="app-icon"><img src="images/logo_normal.png" alt="JigsawPuzzles" /></div>
+    <h1>JigsawPuzzles</h1>
+    <p>Enjoy curated puzzle collections or turn your own photos into satisfying jigsaw puzzles. Challenge your mind with up to 400 pieces.</p>
+    <span class="badge">Available on Android</span>
+</section>
+
+<!-- Features -->
+<div class="section">
+    <h2 class="section-title">Why You'll Love It</h2>
+    <div class="features">
+        <div class="feature-card">
+            <div class="feature-icon">🎨</div>
+            <h3>Curated Puzzle Library</h3>
+            <p>Browse a handpicked collection of stunning images ready to play — no setup required.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🖼️</div>
+            <h3>Your Photos, Your Puzzles</h3>
+            <p>Pick any image from your gallery and watch it transform into a beautiful jigsaw puzzle instantly.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Smooth & Responsive</h3>
+            <p>Drag, snap, and zoom with fluid controls. Pieces click into place with a satisfying precision.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3>Pinch to Zoom</h3>
+            <p>Zoom into the puzzle board for fine-grained control on the most challenging pieces.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">💡</div>
+            <h3>Hints When You're Stuck</h3>
+            <p>Use a hint item to automatically place one puzzle piece in its correct position instantly.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">💾</div>
+            <h3>Auto-Save Progress</h3>
+            <p>Step away anytime — your puzzle is saved automatically so you can pick up right where you left off.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Difficulty -->
+<section class="difficulty-section">
+    <div style="max-width:1000px; margin:0 auto;">
+        <h2 class="section-title">6 Difficulty Levels</h2>
+        <div class="difficulty-grid">
+            <span class="difficulty-chip">36 <span class="difficulty-label">pieces</span></span>
+            <span class="difficulty-chip">64 <span class="difficulty-label">pieces</span></span>
+            <span class="difficulty-chip">100 <span class="difficulty-label">pieces</span></span>
+            <span class="difficulty-chip">144 <span class="difficulty-label">pieces</span></span>
+            <span class="difficulty-chip">225 <span class="difficulty-label">pieces</span></span>
+            <span class="difficulty-chip">400 <span class="difficulty-label">pieces</span></span>
+        </div>
+        <p style="text-align:center; color:#6b7280; margin-top:28px; font-size:15px;">
+            From a quick 36-piece warm-up to a mind-bending 400-piece marathon — choose your challenge.
+        </p>
+    </div>
+</section>
+
+<!-- How to play -->
+<div class="section">
+    <h2 class="section-title">How to Play</h2>
+    <div class="steps">
+        <div class="step">
+            <div class="step-number">1</div>
+            <h3>Pick an Image</h3>
+            <p>Choose from the built-in library or select a photo from your gallery.</p>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <h3>Set the Difficulty</h3>
+            <p>Select the number of pieces — from 36 for beginners to 400 for experts.</p>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <h3>Drag & Snap</h3>
+            <p>Tap a piece from the tray, drag it to the board, and snap it into position.</p>
+        </div>
+        <div class="step">
+            <div class="step-number">4</div>
+            <h3>Complete & Share</h3>
+            <p>Finish the puzzle, save your masterpiece, and share it with friends.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p style="margin-bottom:10px;">
+        <a href="https://aiceking314309.github.io/jigsawpuzzles_privacy">Privacy Policy</a>
+    </p>
+    <p>&copy; 2026 AiceKing Games. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
