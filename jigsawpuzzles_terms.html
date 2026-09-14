@@ -3,62 +3,407 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Terms of Use - JigsawPuzzles</title>
-    <style type="text/css">
-        body { font-family: sans-serif; line-height: 1.6; padding: 20px; max-width: 800px; margin: 0 auto; color: #333; }
-        h1 { color: #111; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        h2 { color: #2c3e50; margin-top: 25px; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 5px; }
+    <title>Terms of Service — Jigsaw Puzzles | IceCloud Games</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #070b14;
+            --surface: rgba(255,255,255,0.04);
+            --surface-hi: rgba(255,255,255,0.07);
+            --border: rgba(255,255,255,0.09);
+            --border-hi: rgba(255,255,255,0.18);
+            --text: #eef2ff;
+            --muted: #97a0b8;
+            --faint: #5c6580;
+            --cyan: #22d3ee;
+            --indigo: #818cf8;
+            --fuchsia: #e879f9;
+            --grad: linear-gradient(100deg, #22d3ee, #818cf8 50%, #e879f9);
+            --radius: 22px;
+        }
+
+        body {
+            font-family: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .wrap { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+
+        /* ===== 极光背景 ===== */
+        .aurora {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .aurora span {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(110px);
+            opacity: 0.14;
+        }
+
+        .aurora .a1 { width: 520px; height: 520px; background: var(--fuchsia); top: -180px; left: -120px; }
+        .aurora .a2 { width: 440px; height: 440px; background: var(--indigo); top: 45%; right: -160px; }
+        .aurora .a3 { width: 400px; height: 400px; background: var(--cyan); bottom: -160px; left: 25%; }
+
+        /* ===== 导航 ===== */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            background: rgba(7,11,20,0.7);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+        }
+
+        .brand { font-size: 16px; font-weight: 700; letter-spacing: -0.2px; }
+
+        .brand i {
+            font-style: normal;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link {
+            font-size: 13.5px;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover { color: var(--text); }
+
+        /* ===== 页头 ===== */
+        .page-head {
+            text-align: center;
+            padding: 76px 0 44px;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #c7d2fe;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 9px 20px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            margin-bottom: 26px;
+        }
+
+        .pill::before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--fuchsia);
+            box-shadow: 0 0 10px var(--fuchsia);
+        }
+
+        .page-head h1 {
+            font-size: clamp(34px, 5.5vw, 52px);
+            font-weight: 800;
+            letter-spacing: -1.6px;
+            margin-bottom: 12px;
+        }
+
+        .page-head h1 em {
+            font-style: normal;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .updated {
+            font-size: 12.5px;
+            font-weight: 600;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            color: var(--faint);
+        }
+
+        .intro {
+            font-size: 16.5px;
+            color: var(--muted);
+            border-left: 3px solid;
+            border-image: var(--grad) 1;
+            padding-left: 20px;
+            margin: 0 0 44px;
+        }
+
+        .intro strong { color: var(--text); }
+
+        /* ===== 条款卡片 ===== */
+        section {
+            position: relative;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 30px 30px;
+            margin-bottom: 18px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: border-color 0.25s;
+            overflow: hidden;
+        }
+
+        section:hover { border-color: var(--border-hi); }
+
+        section::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            filter: blur(70px);
+            opacity: 0;
+            top: -90px;
+            right: -70px;
+            background: var(--fuchsia);
+            transition: opacity 0.35s;
+            pointer-events: none;
+        }
+
+        section:hover::before { opacity: 0.16; }
+
+        section h2 {
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+            font-size: 19px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            margin-bottom: 12px;
+        }
+
+        .no {
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        section p {
+            font-size: 14.5px;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        section p:last-child { margin-bottom: 0; }
+
+        section strong { color: var(--text); }
+
+        section ul { margin: 10px 0 0; padding-left: 4px; list-style: none; }
+
+        section li {
+            position: relative;
+            font-size: 14.5px;
+            color: var(--muted);
+            margin-bottom: 10px;
+            padding-left: 20px;
+        }
+
+        section li:last-child { margin-bottom: 0; }
+
+        section li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.62em;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--grad);
+        }
+
+        section a {
+            color: #a5b4fc;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(165,180,252,0.35);
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        section a:hover { color: #c7d2fe; border-bottom-color: #c7d2fe; }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 38px 0 46px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--faint);
+        }
+
+        footer a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+        footer a:hover { color: var(--text); }
+
+        @media (max-width: 560px) {
+            .page-head { padding: 56px 0 36px; }
+            section { padding: 24px 22px; }
+        }
     </style>
 </head>
 <body>
-<h1>Terms of Use</h1>
-<p>Last updated: 2026-09-04</p>
-<p>By downloading or using the application <strong>JigsawPuzzles</strong> (hereinafter referred to as "the Application"), developed and published by <strong>IceCloud Games</strong>, these terms will automatically apply to you. Please read them carefully before using the Application.</p>
 
-<h2>1. Acceptance of Terms</h2>
-<p>By accessing or using the Application, you agree to be bound by these Terms of Use. If you do not agree to these terms, please do not use the Application.</p>
+<div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
 
-<h2>2. Use of the Application</h2>
-<p>The Application is intended for personal, non-commercial use only. You agree not to:</p>
-<ul>
-    <li>Copy, modify, or distribute the Application or any part of it without prior written permission.</li>
-    <li>Reverse engineer, decompile, or attempt to extract the source code of the Application.</li>
-    <li>Use the Application for any unlawful or prohibited purpose.</li>
-    <li>Attempt to interfere with or disrupt the integrity or performance of the Application.</li>
-</ul>
+<!-- Nav -->
+<nav>
+    <div class="wrap nav-bar">
+        <div class="brand">Jigsaw <i>Puzzles</i></div>
+        <a class="nav-link" href="index.html">← Back to Home</a>
+    </div>
+</nav>
 
-<h2>3. Intellectual Property</h2>
-<p>The Application and all content included within it, including but not limited to graphics, puzzle images, and software code, are the property of IceCloud Games and are protected by applicable intellectual property laws. All rights are reserved.</p>
+<!-- Page head -->
+<div class="wrap">
+    <div class="page-head">
+        <span class="pill">The ground rules</span>
+        <h1>Terms of <em>Service</em></h1>
+        <p class="updated">Last updated: 2026-09-04</p>
+    </div>
 
-<h2>4. User-Provided Content</h2>
-<p>When you use the custom puzzle feature, you may select images from your device's local gallery. These images are processed entirely on your device and are never uploaded to any server. You retain full ownership of any images you provide.</p>
+    <p class="intro">
+        By downloading or using <strong>Jigsaw Puzzles</strong>, an application
+        developed and published by <strong>IceCloud Games</strong>, you agree to the
+        terms below. Please read them before you start playing.
+    </p>
 
-<h2>5. In-App Purchases and Subscriptions</h2>
-<p>The Application offers optional paid subscriptions ("VIP Membership") that unlock additional features. The following terms apply to all in-app purchases:</p>
-<ul>
-    <li><strong>Billing:</strong> All purchases are processed by Google Play. By completing a purchase, you agree to Google Play's Terms of Service.</li>
-    <li><strong>Automatic Renewal:</strong> Subscriptions automatically renew at the end of each billing period (weekly, monthly, or yearly, depending on the plan you selected) unless cancelled at least 24 hours before the end of the current period.</li>
-    <li><strong>Cancellation:</strong> You may cancel your subscription at any time through your Google Play account settings. Cancellation takes effect at the end of the current billing period; you will retain access to VIP features until that date.</li>
-    <li><strong>Refunds:</strong> Refund requests are handled in accordance with <a href="https://support.google.com/googleplay/answer/2479637" target="_blank">Google Play's refund policy</a>. We do not process refunds directly.</li>
-    <li><strong>Price Changes:</strong> We reserve the right to change subscription prices. You will be notified of any price change before it takes effect.</li>
-</ul>
+    <section>
+        <h2><span class="no">01</span> Acceptance of Terms</h2>
+        <p>Accessing or using the app means you accept these Terms of Service. If
+        you don't agree with them, please don't use the app.</p>
+    </section>
 
-<h2>6. Advertisements</h2>
-<p>The Application may display advertisements provided by third-party ad networks, including Google AdMob. These third parties may use cookies or similar technologies to serve ads based on your prior visits to websites or other applications. You can opt out of personalized advertising by visiting your device's ad settings.</p>
+    <section>
+        <h2><span class="no">02</span> Acceptable Use</h2>
+        <p>The app is provided for personal, non-commercial enjoyment. When using
+        it, you agree not to:</p>
+        <ul>
+            <li>Copy, modify, or distribute the app or any part of it without our
+            prior written permission.</li>
+            <li>Reverse engineer, decompile, or attempt to extract its source
+            code.</li>
+            <li>Use the app for any unlawful or prohibited purpose.</li>
+            <li>Interfere with or disrupt the app's integrity or performance.</li>
+        </ul>
+    </section>
 
-<h2>7. Disclaimer of Warranties</h2>
-<p>The Application is provided "as is" without warranties of any kind, either express or implied. We do not warrant that the Application will be error-free, uninterrupted, or free of viruses or other harmful components.</p>
+    <section>
+        <h2><span class="no">03</span> Intellectual Property</h2>
+        <p>The app and everything inside it — graphics, puzzle images, and software
+        code — belongs to IceCloud Games and is protected by applicable
+        intellectual property laws. All rights reserved.</p>
+    </section>
 
-<h2>8. Limitation of Liability</h2>
-<p>To the fullest extent permitted by applicable law, the developer shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of or inability to use the Application.</p>
+    <section>
+        <h2><span class="no">04</span> Content You Provide</h2>
+        <p>When you use the custom-puzzle feature, you select images from your
+        device's own gallery. Those images are processed entirely on your device
+        and are never uploaded to any server. You keep full ownership of anything
+        you provide.</p>
+    </section>
 
-<h2>9. Changes to These Terms</h2>
-<p>We reserve the right to modify these Terms of Use at any time. Changes will be effective immediately upon posting. Your continued use of the Application after any changes constitutes your acceptance of the new terms.</p>
+    <section>
+        <h2><span class="no">05</span> Purchases and Subscriptions</h2>
+        <p>The app offers optional paid subscriptions (the "VIP Membership") that
+        unlock extra features. The following applies to all in-app purchases:</p>
+        <ul>
+            <li><strong>Billing:</strong> every purchase is processed by Google
+            Play. Completing a purchase means you also accept Google Play's Terms
+            of Service.</li>
+            <li><strong>Automatic renewal:</strong> subscriptions renew
+            automatically at the end of each billing period (weekly, monthly, or
+            yearly — whichever plan you chose) unless cancelled at least 24 hours
+            before the current period ends.</li>
+            <li><strong>Cancellation:</strong> cancel anytime through your Google
+            Play account settings. Cancellation takes effect at the end of the
+            current billing period, and you keep VIP access until then.</li>
+            <li><strong>Refunds:</strong> refunds follow
+            <a href="https://support.google.com/googleplay/answer/2479637" target="_blank">Google Play's refund policy</a>;
+            we don't handle refunds directly.</li>
+            <li><strong>Price changes:</strong> we may adjust subscription prices,
+            and you'll be notified before any change takes effect.</li>
+        </ul>
+    </section>
 
-<h2>10. Contact Us</h2>
-<p>If you have any questions about these Terms of Use, please contact us at <strong>yongyuan314309@163.com</strong></p>
-<p>&copy; 2026 IceCloud Games. All rights reserved.</p>
+    <section>
+        <h2><span class="no">06</span> Advertisements</h2>
+        <p>The app may show ads delivered by third-party networks, including Google
+        AdMob. These partners may use cookies or similar technologies to serve ads
+        based on your prior activity across apps and websites. You can opt out of
+        personalized advertising in your device's ad settings.</p>
+    </section>
+
+    <section>
+        <h2><span class="no">07</span> Disclaimer of Warranties</h2>
+        <p>The app is provided "as is," without warranties of any kind, express or
+        implied. We do not guarantee that it will be error-free, uninterrupted, or
+        free of viruses or other harmful components.</p>
+    </section>
+
+    <section>
+        <h2><span class="no">08</span> Limitation of Liability</h2>
+        <p>To the fullest extent permitted by law, the developer is not liable for
+        any indirect, incidental, special, consequential, or punitive damages
+        arising from your use of — or inability to use — the app.</p>
+    </section>
+
+    <section>
+        <h2><span class="no">09</span> Changes to These Terms</h2>
+        <p>We may update these terms at any time. Changes take effect immediately
+        upon posting, and continuing to use the app after a change means you accept
+        the updated terms.</p>
+    </section>
+
+    <section>
+        <h2><span class="no">10</span> Contact Us</h2>
+        <p>Any questions about these terms? Reach us at
+        <strong>yongyuan116119@gmail.com</strong>.</p>
+    </section>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="wrap">
+        <p style="margin-bottom:10px;">
+            <a href="index.html">Home</a>
+            &nbsp;·&nbsp;
+            <a href="jigsawpuzzles_privacy.html">Privacy Policy</a>
+        </p>
+        <p>&copy; 2026 IceCloud Games. All rights reserved.</p>
+    </div>
+</footer>
+
 </body>
 </html>

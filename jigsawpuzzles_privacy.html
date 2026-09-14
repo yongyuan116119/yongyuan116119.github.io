@@ -3,52 +3,385 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Privacy Policy - JigsawPuzzles</title>
-    <style type="text/css">
-        body { font-family: sans-serif; line-height: 1.6; padding: 20px; max-width: 800px; margin: 0 auto; color: #333; }
-        h1 { color: #111; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        h2 { color: #2c3e50; margin-top: 25px; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 5px; }
+    <title>Privacy Policy — Jigsaw Puzzles | IceCloud Games</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #070b14;
+            --surface: rgba(255,255,255,0.04);
+            --surface-hi: rgba(255,255,255,0.07);
+            --border: rgba(255,255,255,0.09);
+            --border-hi: rgba(255,255,255,0.18);
+            --text: #eef2ff;
+            --muted: #97a0b8;
+            --faint: #5c6580;
+            --cyan: #22d3ee;
+            --indigo: #818cf8;
+            --fuchsia: #e879f9;
+            --grad: linear-gradient(100deg, #22d3ee, #818cf8 50%, #e879f9);
+            --radius: 22px;
+        }
+
+        body {
+            font-family: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .wrap { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+
+        /* ===== 极光背景 ===== */
+        .aurora {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .aurora span {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(110px);
+            opacity: 0.14;
+        }
+
+        .aurora .a1 { width: 520px; height: 520px; background: var(--indigo); top: -180px; left: -120px; }
+        .aurora .a2 { width: 440px; height: 440px; background: var(--cyan); top: 45%; right: -160px; }
+        .aurora .a3 { width: 400px; height: 400px; background: var(--fuchsia); bottom: -160px; left: 25%; }
+
+        /* ===== 导航 ===== */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            background: rgba(7,11,20,0.7);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+        }
+
+        .brand { font-size: 16px; font-weight: 700; letter-spacing: -0.2px; }
+
+        .brand i {
+            font-style: normal;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link {
+            font-size: 13.5px;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover { color: var(--text); }
+
+        /* ===== 页头 ===== */
+        .page-head {
+            text-align: center;
+            padding: 76px 0 44px;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #c7d2fe;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 9px 20px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            margin-bottom: 26px;
+        }
+
+        .pill::before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--cyan);
+            box-shadow: 0 0 10px var(--cyan);
+        }
+
+        .page-head h1 {
+            font-size: clamp(34px, 5.5vw, 52px);
+            font-weight: 800;
+            letter-spacing: -1.6px;
+            margin-bottom: 12px;
+        }
+
+        .page-head h1 em {
+            font-style: normal;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .updated {
+            font-size: 12.5px;
+            font-weight: 600;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            color: var(--faint);
+        }
+
+        .intro {
+            font-size: 16.5px;
+            color: var(--muted);
+            border-left: 3px solid;
+            border-image: var(--grad) 1;
+            padding-left: 20px;
+            margin: 0 0 44px;
+        }
+
+        .intro strong { color: var(--text); }
+
+        /* ===== 条款卡片 ===== */
+        section {
+            position: relative;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 30px 30px;
+            margin-bottom: 18px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: border-color 0.25s;
+            overflow: hidden;
+        }
+
+        section:hover { border-color: var(--border-hi); }
+
+        section::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            filter: blur(70px);
+            opacity: 0;
+            top: -90px;
+            right: -70px;
+            background: var(--indigo);
+            transition: opacity 0.35s;
+            pointer-events: none;
+        }
+
+        section:hover::before { opacity: 0.16; }
+
+        section h2 {
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+            font-size: 19px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            margin-bottom: 12px;
+        }
+
+        .no {
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        section p {
+            font-size: 14.5px;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        section p:last-child { margin-bottom: 0; }
+
+        section strong { color: var(--text); }
+
+        section ul { margin: 10px 0 0; padding-left: 4px; list-style: none; }
+
+        section li {
+            position: relative;
+            font-size: 14.5px;
+            color: var(--muted);
+            margin-bottom: 10px;
+            padding-left: 20px;
+        }
+
+        section li:last-child { margin-bottom: 0; }
+
+        section li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.62em;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--grad);
+        }
+
+        section a {
+            color: #a5b4fc;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(165,180,252,0.35);
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        section a:hover { color: #c7d2fe; border-bottom-color: #c7d2fe; }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 38px 0 46px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--faint);
+        }
+
+        footer a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+        footer a:hover { color: var(--text); }
+
+        @media (max-width: 560px) {
+            .page-head { padding: 56px 0 36px; }
+            section { padding: 24px 22px; }
+        }
     </style>
 </head>
 <body>
-<h1>Privacy Policy</h1>
-<p>Last updated: 2026-09-04</p>
-<p>This privacy policy governs your use of the software application <strong>JigsawPuzzles</strong> (hereinafter referred to as "the Application") for mobile devices, which was created by <strong>IceCloud Games</strong> as an independent developer service.</p>
 
-<h2>1. Information Collection and Use</h2>
-<p>For a better experience, while using our Service, we may require you to provide us with certain personally identifiable information. Your personal data, such as your photos and puzzle progress, is retained on your device and is not collected by us in any way.</p>
-<p>The Application also uses Google Analytics for Firebase to collect anonymized usage statistics (for example, which app screens are visited and which features are used). This data helps us understand how the Application is used and improve it. It does not include the contents of your photos or your puzzles. For details, see the third-party privacy policy listed below.</p>
+<div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
 
-<h2>2. Device Permissions</h2>
-<p>The Application may request the following device permissions to provide its core features:</p>
-<ul>
-    <li><strong>Media and Gallery Access:</strong> Used solely to allow you to select photos from your device's local gallery as puzzle images. We do not upload, transmit, or store your photos on any server.</li>
-    <li><strong>Internet Access:</strong> Used to load puzzle images from our storage and to display advertisements via Google AdMob. No personal data is transmitted to us in this process.</li>
-    <li><strong>Notifications:</strong> Used to deliver local reminders about new daily puzzles. All notifications are scheduled and generated locally on your device — we do not operate any push server, and no data is collected through this feature. You can disable notifications at any time in your device's system settings.</li>
-</ul>
+<!-- Nav -->
+<nav>
+    <div class="wrap nav-bar">
+        <div class="brand">Jigsaw <i>Puzzles</i></div>
+        <a class="nav-link" href="index.html">← Back to Home</a>
+    </div>
+</nav>
 
-<h2>3. In-App Purchases and Subscriptions</h2>
-<p>The Application offers optional in-app subscriptions (VIP Membership). All billing and payment transactions are processed exclusively by Google Play. We do not collect, store, or have access to your payment card details or financial information.</p>
-<p>We store your subscription status (e.g., whether you are a VIP member) locally on your device via a secure local database. This information is not transmitted to our servers.</p>
+<!-- Page head -->
+<div class="wrap">
+    <div class="page-head">
+        <span class="pill">Your data stays yours</span>
+        <h1>Privacy <em>Policy</em></h1>
+        <p class="updated">Last updated: 2026-09-04</p>
+    </div>
 
-<h2>4. Third-Party Services</h2>
-<p>The Application does use third-party services that may collect information used to identify you. Link to the privacy policy of third-party service providers used by the Application:</p>
-<ul>
-    <li><a href="https://policies.google.com/privacy" target="_blank">Google Play Services</a></li>
-    <li><a href="https://policies.google.com/technologies/ads" target="_blank">Google AdMob & Advertising Services</a></li>
-    <li><a href="https://play.google.com/about/play-terms/" target="_blank">Google Play Billing</a></li>
-    <li><a href="https://firebase.google.com/support/privacy" target="_blank">Google Analytics for Firebase</a></li>
-</ul>
+    <p class="intro">
+        This policy explains how <strong>Jigsaw Puzzles</strong>, a mobile application
+        published by <strong>IceCloud Games</strong>, handles information. In short:
+        your photos, your puzzle progress, and your purchases never leave your device.
+    </p>
 
-<h2>5. Children's Privacy</h2>
-<p>These Services do not address anyone under the age of 13. We do not knowingly collect personally identifiable information from children under 13.</p>
+    <section>
+        <h2><span class="no">01</span> What We Collect (and Don't)</h2>
+        <p>Your personal content — the photos you pick and the progress you make on
+        each puzzle — is stored entirely on your own device. We do not collect it,
+        upload it, or look at it in any way.</p>
+        <p>The app does use <strong>Google Analytics for Firebase</strong> to gather
+        anonymous usage statistics, such as which screens are visited and which
+        features are tapped. This helps us understand how the app is used and where
+        it can be improved. None of it includes your photos or puzzle content. See
+        the third-party policies below for details.</p>
+    </section>
 
-<h2>6. Changes to This Privacy Policy</h2>
-<p>We may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. These changes are effective immediately after they are posted on this page.</p>
+    <section>
+        <h2><span class="no">02</span> Device Permissions</h2>
+        <p>To deliver its core features, the app may request the following
+        permissions — each used strictly for the purpose described:</p>
+        <ul>
+            <li><strong>Media and gallery access:</strong> lets you choose pictures
+            from your own gallery to turn into puzzles. Your photos are never
+            uploaded, transmitted, or stored on any server.</li>
+            <li><strong>Internet access:</strong> used to download puzzle images
+            from our storage and to display ads through Google AdMob. No personal
+            data is sent to us during this process.</li>
+            <li><strong>Notifications:</strong> used for local reminders about the
+            new daily puzzle. Every notification is scheduled and generated on your
+            device — we run no push server and collect nothing through this
+            feature. You can turn notifications off anytime in system settings.</li>
+        </ul>
+    </section>
 
-<h2>7. Contact Us</h2>
-<p>If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at <strong>yongyuan314309@163.com</strong></p>
+    <section>
+        <h2><span class="no">03</span> Purchases and Subscriptions</h2>
+        <p>The app offers an optional VIP membership subscription. All billing is
+        handled exclusively by <strong>Google Play</strong> — we never see, store,
+        or process your payment details or any financial information.</p>
+        <p>Your subscription status (whether you are currently a VIP member) is
+        kept in a secure local database on your device and is not sent to our
+        servers.</p>
+    </section>
+
+    <section>
+        <h2><span class="no">04</span> Third-Party Services</h2>
+        <p>The app relies on the following third-party services, which may collect
+        certain information as described in their own policies:</p>
+        <ul>
+            <li><a href="https://policies.google.com/privacy" target="_blank">Google Play Services</a></li>
+            <li><a href="https://policies.google.com/technologies/ads" target="_blank">Google AdMob &amp; Advertising Services</a></li>
+            <li><a href="https://play.google.com/about/play-terms/" target="_blank">Google Play Billing</a></li>
+            <li><a href="https://firebase.google.com/support/privacy" target="_blank">Google Analytics for Firebase</a></li>
+        </ul>
+    </section>
+
+    <section>
+        <h2><span class="no">05</span> Children's Privacy</h2>
+        <p>The app is not directed at anyone under the age of 13, and we do not
+        knowingly collect personally identifiable information from children
+        under 13.</p>
+    </section>
+
+    <section>
+        <h2><span class="no">06</span> Updates to This Policy</h2>
+        <p>We may revise this policy from time to time, so it's worth checking this
+        page occasionally. Any change takes effect as soon as it is posted here.</p>
+    </section>
+
+    <section>
+        <h2><span class="no">07</span> Contact Us</h2>
+        <p>Questions or suggestions about this policy? Write to us at
+        <strong>yongyuan116119@gmail.com</strong> — we're happy to help.</p>
+    </section>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="wrap">
+        <p style="margin-bottom:10px;">
+            <a href="index.html">Home</a>
+            &nbsp;·&nbsp;
+            <a href="jigsawpuzzles_terms.html">Terms of Service</a>
+        </p>
+        <p>&copy; 2026 IceCloud Games. All rights reserved.</p>
+    </div>
+</footer>
+
 </body>
 </html>
